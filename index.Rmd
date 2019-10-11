@@ -1,12 +1,12 @@
 ---
-title: "Nick Strayer's CV"
-author: Nick Strayer
+title: "Raven McKnight's CV"
+author: Raven McKnight
 date: "`r Sys.Date()`"
 output:
   pagedown::html_resume:
     css: ['css/styles.css', 'resume']
     # set it to true for a self-contained HTML page but it'll take longer to render
-    self_contained: true
+    self_contained: false
 ---
 
 ```{r, include=FALSE}
@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 library(glue)
 library(tidyverse)
+library(pagedown)
 
 # Set this to true to have links turned into footnotes at the end of the document
 PDF_EXPORT <- FALSE
@@ -53,7 +54,7 @@ Aside
 ```{r}
 # When in export mode the little dots are unaligned, so fix that. 
 if(PDF_EXPORT){
-  cat("View this CV online with links at _nickstrayer.me/cv_")
+  cat("View this CV online with links at _ravenmcknight.com/cv_")
 } else {
   cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/nstrayer/cv/raw/master/strayer_cv.pdf)")
 }
@@ -63,32 +64,17 @@ Contact {#contact}
 --------------------------------------------------------------------------------
 
 
-- <i class="fa fa-envelope"></i> nick.strayer@gmail.com
-- <i class="fa fa-twitter"></i> NicholasStrayer
-- <i class="fa fa-github"></i> github.com/nstrayer
-- <i class="fa fa-link"></i> [nickstrayer.me](http://nickstrayer.me/)
-- <i class="fa fa-phone"></i> (734) 645-0110
+- <i class="fa fa-envelope"></i> raven.i.mcknight@gmail.com
+- <i class="fa fa-github"></i> github.com/ravenmcknight
+- <i class="fa fa-link"></i> [ravenmcknight.com](http://ravenmcknight.com/)
+- <i class="fa fa-phone"></i> (828) 776-3258
 
 
 
-Skills {#skills}
+Technical skills {#skills}
 --------------------------------------------------------------------------------
 
 
-Highly experienced in
-
-
-- R 
-- Python
-- Javascript
-
-Experience with
-
-
-- Bash
-- SQL
-- C++
-- AWK
 
 
 Disclaimer {#disclaimer}
@@ -105,15 +91,12 @@ Last updated on `r Sys.Date()`.
 Main
 ================================================================================
 
-Nick Strayer {#title}
+Raven McKnight {#title}
 --------------------------------------------------------------------------------
 
 
 ```{r}
-intro_text <- "I have made [visualizations viewed by hundreds of thousands of people](https://www.nytimes.com/interactive/2016/08/26/us/college-student-migration.html), [sped up query times for 25 terabytes of data by an average of 4,800 times](https://livefreeordichotomize.com/2019/06/04/using_awk_and_r_to_parse_25tb/), and built [packages for R](https://github.com/nstrayer/shinysense) that let you [do magic](http://nickstrayer.me/dataDayTexas/).
-
-Currently searching for a data science position that allows me to build tools using visualization and machine learning to help people explore and understand their data. 
-"
+intro_text <- "I am a senior at Macalester College interested in spatio-temporal statistics, reproducible research"
 
 cat(sanitize_links(intro_text))
 ```
@@ -129,24 +112,18 @@ print_section(position_data, 'education')
 
 
 
-Research Experience {data-icon=laptop}
+Work Experience {data-icon=laptop}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section(position_data, 'research_positions')
+print_section(position_data, 'work_experience')
 ```
 
-
-
-Industry Experience {data-icon=suitcase}
+Research Experience {data-icon=book}
 --------------------------------------------------------------------------------
 
-::: aside
-I have worked in a variety of roles ranging from journalist to software engineer to data scientist. I like collaborative environments where I can learn from my peers. 
-:::
-
 ```{r}
-print_section(position_data, 'industry_positions')
+print_section(position_data, 'project')
 ```
 
 <br>
@@ -156,55 +133,28 @@ print_section(position_data, 'industry_positions')
 Teaching Experience {data-icon=chalkboard-teacher}
 --------------------------------------------------------------------------------
 
-::: aside
-I am passionate about education. I believe that no topic is too complex if the teacher is empathetic and willing to think about new methods of approaching task. 
+::: 
 :::
 
 ```{r}
-print_section(position_data, 'teaching_positions')
+print_section(position_data, 'teaching_experience')
 ```
 
-
-Selected Data Science Writing {data-icon=chart-line}
---------------------------------------------------------------------------------
-
-
-::: aside
-I regularly blog about data science and visualization on my blog [LiveFreeOrDichotomize.](https://livefreeordichotomize.com/)
-:::
-
-```{r}
-print_section(position_data, 'data_science_writings')
-```
-
-
-
-Selected Press (About)  {data-icon=newspaper}
+Volunteering & Service {data-icon=book}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section(position_data, 'about_me_press')
+print_section(position_data, 'volunteer_service')
 ```
 
 
 
-Selected Press (By)  {data-icon=newspaper}
---------------------------------------------------------------------------------
+<!-- Talks & Presentations {data-icon=book} -->
+<!-- -------------------------------------------------------------------------------- -->
 
-```{r}
-print_section(position_data, 'by_me_press')
-```
-
-
-
-
-Selected Publications, Posters, and Talks {data-icon=book}
---------------------------------------------------------------------------------
-
-```{r}
-print_section(position_data, 'academic_articles')
-```
-
+<!-- ```{r} -->
+<!-- print_section(position_data, 'talks_pres') -->
+<!-- ``` -->
 
 
 ```{r}

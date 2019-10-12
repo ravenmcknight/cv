@@ -1,0 +1,201 @@
+---
+title: "Raven McKnight's CV"
+author: Raven McKnight
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['resume']
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: TRUE
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(glue)
+library(tidyverse)
+library(pagedown)
+
+# Set this to true to have links turned into footnotes at the end of the document
+PDF_EXPORT <- FALSE
+
+# Holds all the links that were inserted for placement at the end
+links <- c()
+
+source('parsing_functions.R')
+
+# Load csv with position info
+position_data <- read_csv('positions.csv')
+```
+
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+if(PDF_EXPORT){
+  cat("
+  <style>
+  :root{
+    --decorator-outer-offset-left: -6.5px;
+  }
+  </style>")
+}
+```
+
+
+Aside
+================================================================================
+
+
+![logo](posterior_draws.png){width=100%}
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+# if(PDF_EXPORT){
+#   cat("View this CV online with links at _ravenmcknight.com/cv_")
+# } else {
+#   cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/nstrayer/cv/raw/master/strayer_cv.pdf)")
+# }
+```
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+
+- <i class="fa fa-envelope"></i> raven.i.mcknight@gmail.com
+- <i class="fa fa-github"></i> github.com/ravenmcknight
+- <i class="fa fa-link"></i> [ravenmcknight.com](http://ravenmcknight.com/)
+- <i class="fa fa-phone"></i> (828) 776-3258
+
+
+Skills {#skills}
+--------------------------------------------------------------------------------
+
+R, Shiny, Git, ArcGIS, \
+QGIS, Leaflet, LaTeX, \
+bookdown, blogdown, \
+Python, SQL, Excel, \
+Stan, JAGS, Hugo,  \
+Adobe Creative Suite
+
+
+Interests {#interests}
+--------------------------------------------------------------------------------
+
+
+Spatio-temporal statistics \
+Public transit \
+Urban planning \
+RShiny development \
+Reproducible research \
+Open source, open data \
+Visualization & design \
+Civic engagement \
+
+
+
+
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+Source code: [github.com/ravenmcknight/cv](https://github.com/ravenmcknight/cv).
+
+
+Main
+================================================================================
+
+Raven McKnight {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+intro_text <- "Statistician and data scientist seeking opportunity to engage in meaningful research & discovery for social good. I have worked on projects with Metro Transit, [Saint Paul City Council](https://www.stpaul.gov/departments/city-council/ward-2/saint-paul-3k-overview), and [The National Gallery of Art](https://www.nga.gov/press/2019/datathon.html).
+"
+
+
+cat(sanitize_links(intro_text))
+```
+
+
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'education')
+```
+
+
+
+Work Experience {data-icon=laptop}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'work_experience')
+```
+
+Research Experience {data-icon=book}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'project')
+```
+
+
+
+Teaching Experience {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+::: aside
+I love teaching and learning about pedagogy. I enjoy writing accessible tutorials for my peers and encouraging more women and typically underrepresented students to pursue statistics and data science!
+:::
+
+
+
+
+```{r}
+print_section(position_data, 'teaching_experience')
+```
+
+Volunteering & Service {data-icon=book}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'volunteer_service')
+```
+
+
+
+Talks & Presentations {data-icon=book}
+--------------------------------------------------------------------------------
+
+::: aside
+
+I'm looking forward to giving my first academic talks in the coming months!
+:::
+```{r}
+print_section(position_data, 'talks_pres')
+```
+
+
+```{r}
+if(PDF_EXPORT){
+  cat("
+  
+Links {data-icon=link}
+--------------------------------------------------------------------------------
+
+<br>
+
+
+")
+  
+  walk2(links, 1:length(links), function(link, index){
+    print(glue('{index}. {link}'))
+  })
+}
+```
+
+

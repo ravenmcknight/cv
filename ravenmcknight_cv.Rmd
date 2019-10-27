@@ -136,13 +136,13 @@ Work Experience {data-icon=laptop}
 print_section(position_data, 'work_experience')
 ```
 
-Research Experience {data-icon=book}
+
+Selected Projects {data-icon=book}
 --------------------------------------------------------------------------------
 
 ```{r}
 print_section(position_data, 'project')
 ```
-
 
 
 Teaching Experience {data-icon=chalkboard-teacher}
@@ -159,7 +159,7 @@ I love teaching and learning about pedagogy. I enjoy writing accessible tutorial
 print_section(position_data, 'teaching_experience')
 ```
 
-Volunteering & Service {data-icon=book}
+Volunteering & Service {data-icon=hands-helping}
 --------------------------------------------------------------------------------
 
 ```{r}
@@ -168,7 +168,12 @@ print_section(position_data, 'volunteer_service')
 
 
 
+Talks & Presentations {data-icon=chart-bar}
+--------------------------------------------------------------------------------
 
+```{r}
+print_section(position_data, 'talks_pres')
+```
 
 
 ```{r}
